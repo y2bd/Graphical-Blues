@@ -129,9 +129,6 @@ int main()
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // draw the skybox first
-        skybox.draw(view, proj);
-
 		shader.assignUniform("lightPos", lightPos);
 		shader.assignUniform("viewPos", camPos);
 
@@ -174,6 +171,9 @@ int main()
 
 		shader.unbind();
 
+        // draw the skybox last
+        skybox.draw(view, proj);
+
 		// buffer
 		glfwSwapBuffers(window);
 	}
@@ -199,8 +199,6 @@ GLFWwindow* setupWindow(int width, int height, const char* name)
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 	glfwWindowHint(GLFW_SAMPLES, 16);
 
-	glEnable(GL_DEPTH_TEST);
-
 	// create and assign window
 	GLFWwindow* window = glfwCreateWindow(width, height, name, nullptr, nullptr);
 	if (window == nullptr)
@@ -224,6 +222,9 @@ GLFWwindow* setupWindow(int width, int height, const char* name)
 
 	// register callbacks
 	glfwSetKeyCallback(window, key_callback);
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
 
 	return window;
 }

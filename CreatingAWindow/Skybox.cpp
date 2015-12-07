@@ -12,47 +12,47 @@ Skybox::Skybox(const GLchar* right,
     // setup vertices
     this->size = size;
     GLfloat vertices[6*6*3] = {
-        -size / 2.0,  size / 2.0, -size / 2.0,
-        -size / 2.0, -size / 2.0, -size / 2.0,
-        size / 2.0, -size / 2.0, -size / 2.0,
-        size / 2.0, -size / 2.0, -size / 2.0,
-        size / 2.0,  size / 2.0, -size / 2.0,
-        -size / 2.0,  size / 2.0, -size / 2.0,
+        -size / 2.0f,  size / 2.0f, -size / 2.0f,
+        -size / 2.0f, -size / 2.0f, -size / 2.0f,
+        size / 2.0f, -size / 2.0f, -size / 2.0f,
+        size / 2.0f, -size / 2.0f, -size / 2.0f,
+        size / 2.0f,  size / 2.0f, -size / 2.0f,
+        -size / 2.0f,  size / 2.0f, -size / 2.0f,
 
-        -size / 2.0, -size / 2.0,  size / 2.0,
-        -size / 2.0, -size / 2.0, -size / 2.0,
-        -size / 2.0,  size / 2.0, -size / 2.0,
-        -size / 2.0,  size / 2.0, -size / 2.0,
-        -size / 2.0,  size / 2.0,  size / 2.0,
-        -size / 2.0, -size / 2.0,  size / 2.0,
+        -size / 2.0f, -size / 2.0f,  size / 2.0f,
+        -size / 2.0f, -size / 2.0f, -size / 2.0f,
+        -size / 2.0f,  size / 2.0f, -size / 2.0f,
+        -size / 2.0f,  size / 2.0f, -size / 2.0f,
+        -size / 2.0f,  size / 2.0f,  size / 2.0f,
+        -size / 2.0f, -size / 2.0f,  size / 2.0f,
 
-        size / 2.0, -size / 2.0, -size / 2.0,
-        size / 2.0, -size / 2.0,  size / 2.0,
-        size / 2.0,  size / 2.0,  size / 2.0,
-        size / 2.0,  size / 2.0,  size / 2.0,
-        size / 2.0,  size / 2.0, -size / 2.0,
-        size / 2.0, -size / 2.0, -size / 2.0,
+        size / 2.0f, -size / 2.0f, -size / 2.0f,
+        size / 2.0f, -size / 2.0f,  size / 2.0f,
+        size / 2.0f,  size / 2.0f,  size / 2.0f,
+        size / 2.0f,  size / 2.0f,  size / 2.0f,
+        size / 2.0f,  size / 2.0f, -size / 2.0f,
+        size / 2.0f, -size / 2.0f, -size / 2.0f,
 
-        -size / 2.0, -size / 2.0,  size / 2.0,
-        -size / 2.0,  size / 2.0,  size / 2.0,
-        size / 2.0,  size / 2.0,  size / 2.0,
-        size / 2.0,  size / 2.0,  size / 2.0,
-        size / 2.0, -size / 2.0,  size / 2.0,
-        -size / 2.0, -size / 2.0,  size / 2.0,
+        -size / 2.0f, -size / 2.0f,  size / 2.0f,
+        -size / 2.0f,  size / 2.0f,  size / 2.0f,
+        size / 2.0f,  size / 2.0f,  size / 2.0f,
+        size / 2.0f,  size / 2.0f,  size / 2.0f,
+        size / 2.0f, -size / 2.0f,  size / 2.0f,
+        -size / 2.0f, -size / 2.0f,  size / 2.0f,
 
-        -size / 2.0,  size / 2.0, -size / 2.0,
-        size / 2.0,  size / 2.0, -size / 2.0,
-        size / 2.0,  size / 2.0,  size / 2.0,
-        size / 2.0,  size / 2.0,  size / 2.0,
-        -size / 2.0,  size / 2.0,  size / 2.0,
-        -size / 2.0,  size / 2.0, -size / 2.0,
+        -size / 2.0f,  size / 2.0f, -size / 2.0f,
+        size / 2.0f,  size / 2.0f, -size / 2.0f,
+        size / 2.0f,  size / 2.0f,  size / 2.0f,
+        size / 2.0f,  size / 2.0f,  size / 2.0f,
+        -size / 2.0f,  size / 2.0f,  size / 2.0f,
+        -size / 2.0f,  size / 2.0f, -size / 2.0f,
 
-        -size / 2.0, -size / 2.0, -size / 2.0,
-        -size / 2.0, -size / 2.0,  size / 2.0,
-        size / 2.0, -size / 2.0, -size / 2.0,
-        size / 2.0, -size / 2.0, -size / 2.0,
-        -size / 2.0, -size / 2.0,  size / 2.0,
-        size / 2.0, -size / 2.0,  size / 2.0
+        -size / 2.0f, -size / 2.0f, -size / 2.0f,
+        -size / 2.0f, -size / 2.0f,  size / 2.0f,
+        size / 2.0f, -size / 2.0f, -size / 2.0f,
+        size / 2.0f, -size / 2.0f, -size / 2.0f,
+        -size / 2.0f, -size / 2.0f,  size / 2.0f,
+        size / 2.0f, -size / 2.0f,  size / 2.0f
     };
     memcpy(this->vertices, vertices, sizeof(vertices));
 
@@ -111,10 +111,8 @@ void Skybox::loadCubemap()
 
 void Skybox::draw(const glm::mat4 &view,  const glm::mat4 &proj)
 {
-    // Draw skybox as last
     glDepthFunc(GL_LEQUAL);  // Change depth function so depth test passes when values are equal to depth buffer's content
     shader.bind();
-    //view = glm::mat4(glm::mat3(view));	// Remove any translation component of the view matrix
     shader.assignUniform("view", glm::mat4(glm::mat3(view)));
     shader.assignUniform("projection", proj);
     // skybox cube
