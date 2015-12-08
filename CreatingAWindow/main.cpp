@@ -117,7 +117,7 @@ int main()
 	glm::vec3 camPos = glm::vec3(0.0f, 0.0f, 3.0f);
 
     // Initialize skybox
-    Skybox skybox("skybox/right.jpg", "skybox/left.jpg", "skybox/top.jpg", "skybox/bottom.jpg", "skybox/back.jpg", "skybox/front.jpg", 100.0);
+    Skybox skybox("skybox/right.jpg", "skybox/left.jpg", "skybox/top.jpg", "skybox/bottom.jpg", "skybox/back.jpg", "skybox/front.jpg", 1.0f);
 
 	// event loop
 	while (!glfwWindowShouldClose(window))
