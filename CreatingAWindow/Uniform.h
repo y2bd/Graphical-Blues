@@ -47,6 +47,9 @@ template<>
 void Uniform::apply(glm::vec4 value);
 
 template<>
+void Uniform::apply(GLuint value);
+
+template<>
 void Uniform::apply(GLint value);
 
 template<>

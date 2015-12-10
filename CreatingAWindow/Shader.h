@@ -15,10 +15,15 @@
 class Shader
 {
 private:
+	const GLchar *vertexPath;
+	const GLchar *fragmentPath;
+
 	std::map<const GLchar*, std::unique_ptr<UniformData>> uniforms;
 
 	std::string readFile(const GLchar* path);
 
+	void attachShaders();
+	void reattachShadersIfNewer();
 	int compileShader(int shaderType, const GLchar* shaderSource, GLuint& shaderID);
 	int Shader::checkShaderLinkingError(int shaderProgram);
 public:

@@ -24,12 +24,33 @@
     <ClCompile Include="Uniform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="vert.glsl">
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="frag.glsl">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="shadowVert.glsl">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="debugVert.glsl">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="debugFrag.glsl">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="shadowFrag.glsl">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
@@ -43,6 +64,15 @@
     <ClInclude Include="Uniform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="wall.jpg">
@@ -54,5 +84,19 @@
     <Image Include="awesomeface.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="brown.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="cactus1_diffuse.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cactus1.mtl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="cactus1.obj">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

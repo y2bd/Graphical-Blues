@@ -2,21 +2,10 @@
 
 Shader::Shader(const GLchar * vertexPath, const GLchar * fragmentPath)
 {
-	std::string vpContents = readFile(vertexPath);
-	std::string fpContents = readFile(fragmentPath);
+	this->vertexPath = vertexPath;
+	this->fragmentPath = fragmentPath;
 
-	GLuint vertex, fragment;
-	compileShader(GL_VERTEX_SHADER, vpContents.c_str(), vertex);
-	compileShader(GL_FRAGMENT_SHADER, fpContents.c_str(), fragment);
-
-	this->program = glCreateProgram();
-	glAttachShader(this->program, vertex);
-	glAttachShader(this->program, fragment);
-	glLinkProgram(this->program);
-	
-	checkShaderLinkingError(this->program);
-	glDeleteShader(vertex);
-	glDeleteShader(fragment);
+	attachShaders();
 }
 
 void Shader::bind()
@@ -32,6 +21,30 @@ void Shader::bind()
 void Shader::unbind()
 {
 	glUseProgram(0);
+}
+
+void Shader::attachShaders()
+{
+	std::string vpContents = readFile(vertexPath);
+	std::string fpContents = readFile(fragmentPath);
+
+	GLuint vertex, fragment;
+	compileShader(GL_VERTEX_SHADER, vpContents.c_str(), vertex);
+	compileShader(GL_FRAGMENT_SHADER, fpContents.c_str(), fragment);
+
+	this->program = glCreateProgram();
+	glAttachShader(this->program, vertex);
+	glAttachShader(this->program, fragment);
+	glLinkProgram(this->program);
+
+	checkShaderLinkingError(this->program);
+	glDeleteShader(vertex);
+	glDeleteShader(fragment);
+}
+
+void Shader::reattachShadersIfNewer()
+{
+
 }
 
 std::string Shader::readFile(const GLchar * path)

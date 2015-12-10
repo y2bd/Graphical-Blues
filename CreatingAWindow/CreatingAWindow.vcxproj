@@ -73,8 +73,8 @@
     <LibraryPath>C:\Users\Jason\Downloads\OpenGL\glew-1.13.0\lib\Release\Win32;C:\Users\Jason\Downloads\OpenGL\glfw-3.1.2.bin.WIN64\lib-vc2015;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Jason\Downloads\OpenGL\glm;C:\Users\Jason\Downloads\OpenGL\soil\src;C:\Users\Jason\Downloads\OpenGL\glfw-3.1.2.bin.WIN64\include;C:\Users\Jason\Downloads\OpenGL\glew-1.13.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Jason\Downloads\OpenGL\soil\projects\VC9\x64\Release;C:\Users\Jason\Downloads\OpenGL\glfw-3.1.2.bin.WIN64\lib-vc2015;C:\Users\Jason\Downloads\OpenGL\glew-1.13.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Jason\Documents\Visual Studio 2015\Projects\OpenGL\CreatingAWindow\lib\assimp-3.1.1-win-binaries\include;C:\Users\Jason\Downloads\OpenGL\glm;C:\Users\Jason\Downloads\OpenGL\soil\src;C:\Users\Jason\Downloads\OpenGL\glfw-3.1.2.bin.WIN64\include;C:\Users\Jason\Downloads\OpenGL\glew-1.13.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Jason\Documents\Visual Studio 2015\Projects\OpenGL\CreatingAWindow\lib\assimp-3.1.1-win-binaries\lib64;C:\Users\Jason\Downloads\OpenGL\soil\projects\VC9\x64\Release;C:\Users\Jason\Downloads\OpenGL\glfw-3.1.2.bin.WIN64\lib-vc2015;C:\Users\Jason\Downloads\OpenGL\glew-1.13.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -95,7 +95,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;SOIL.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -127,7 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Uniform.cpp" />
   </ItemGroup>
@@ -156,16 +159,82 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="shadowVert.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="shadowVert.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="shadowFrag.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="shadowFrag.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="debugVert.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="debugVert.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="debugFrag.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="debugFrag.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Maths.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Uniform.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="awesomeface.png" />
+    <Image Include="brown.png" />
+    <Image Include="cactus1_diffuse.png" />
     <Image Include="container.jpg" />
     <Image Include="wall.jpg">
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cactus1.mtl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cactus1.obj">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <FileType>Document</FileType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

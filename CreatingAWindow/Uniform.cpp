@@ -54,6 +54,12 @@ void Uniform::apply(glm::mat4 value)
 }
 
 template<>
+void Uniform::apply(GLuint value)
+{
+	glUniform1ui(this->location, value);
+}
+
+template<>
 void Uniform::apply(GLint value)
 {
 	glUniform1i(this->location, value);
