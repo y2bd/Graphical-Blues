@@ -34,7 +34,7 @@ GLuint createTexture(const char* filename);
 const GLfloat WIDTH = 1366, HEIGHT = 768;
 const GLchar* TITLE = "Graphical Blues (167)";
 
-unsigned int walkSound, desertMusic, grassmusic;
+unsigned int walkSound = 0, desertMusic = 0, grassmusic = 0;
 // Deltatime
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
@@ -1173,8 +1173,14 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	}
     if (key == GLFW_KEY_W || key == GLFW_KEY_A || key == GLFW_KEY_S || key == GLFW_KEY_D)
     {
-        if (action == GLFW_PRESS) grassmusic = Sound::playInLoop("walk.wav");
-        else if (action == GLFW_RELEASE)Sound::stop(grassmusic);
+        if (action == GLFW_PRESS && walkSound == 0) 
+            walkSound = Sound::playInLoop("walk.wav");
+        else if (action == GLFW_RELEASE && walkSound != 0)
+        {
+            Sound::stop(walkSound);
+            walkSound = 0;
+        }
+
     }
 }
 
