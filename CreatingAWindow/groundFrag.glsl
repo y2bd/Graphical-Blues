@@ -26,16 +26,24 @@ struct Light {
 };
 
 uniform vec3 cameraPos;
+
 uniform bool doShadow;
+uniform bool doNormal;
 uniform bool doLight;
 
 uniform Material material;
 uniform Light light;
 
+uniform mat3 normalMatrix;
+
 uniform sampler2DShadow shadowMap;
+uniform sampler2D normalMap;
 
 float calculateIfShadow(vec4 positionLightSpace)
 {
+    vec3 mapNormal = texture(normalMap, fs_in.texCoord).rgb ;
+    mapNormal = vec3(mapNormal.x, mapNormal.z, mapNormal.y);
+    vec3 norm = normalize(mapNormal * 2.0 - 1.0);
 
     // dehomogonize
     vec3 projCoords = positionLightSpace.xyz / positionLightSpace.w;
@@ -58,7 +66,7 @@ float calculateIfShadow(vec4 positionLightSpace)
     */
 
     vec3 lightDir = normalize(-light.position);
-    float shadowBias = max(0.005 * (1.0 - dot(fs_in.normal, lightDir)), 0.0005); ;
+    float shadowBias = max(0.05 * (1.0 - dot(fs_in.normal, lightDir)), 0.005); ;
     
     //vec3 projCoordsBiased = vec3(projCoords.xy, projCoords.z - shadowBias);
     //float shadow = 1.0f - texture(shadowMap, projCoordsBiased);
@@ -86,6 +94,11 @@ float calculateIfShadow(vec4 positionLightSpace)
 
 void main()
 {
+    vec3 mapNormal = texture(normalMap, fs_in.texCoord).rgb ;
+    mapNormal = vec3(mapNormal.x, mapNormal.z, mapNormal.y);
+
+    if (!doNormal) mapNormal = fs_in.normal;
+
     vec3 tex = texture(material.texture_diffuse1, fs_in.texCoord).rgb;
 
     // calc ambient
@@ -93,7 +106,7 @@ void main()
     vec3 ambient = light.ambient * tex;
 
     // get angle
-    vec3 norm = normalize(fs_in.normal);
+    vec3 norm = normalize(mapNormal * 2.0 - 1.0);
     vec3 lightDir = normalize(-light.position);
 
     // get diffuse from angle
@@ -109,8 +122,6 @@ void main()
     float shininess = 64;
     float specAmt = pow(max(dot(norm, halfwayDir), 0.0), material.shininess);
     vec3 specular = light.specular * (specAmt * material.specular);
-
-
 
     float shadow = calculateIfShadow(fs_in.positionLightSpace);
     vec3 lighting = (ambient + (1.0 - shadow) * (diffuse + specular)) * tex;

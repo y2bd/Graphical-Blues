@@ -15,6 +15,8 @@ void Model::loadModel(std::string path)
 	this->dir = path.substr(0, path.find_last_of('/'));
 
 	this->processNode(scene->mRootNode, scene);
+
+	std::cout << "num meshes: " << meshes.size() << std::endl;
 }
 
 void Model::processNode(aiNode* node, const aiScene* scene)
@@ -130,6 +132,39 @@ void Model::draw(Shader& shader)
 	{
 		this->meshes[i].draw(shader);
 	}
+}
+
+AABB Model::getBoundingBox(glm::mat4 modelMatrix)
+{
+	// we're only getting the bounding box of the first mesh, too bad :(
+	Mesh mesh = meshes[0];
+
+	glm::vec4 fv = modelMatrix * glm::vec4(mesh.vertices[0].position, 1.0f);
+	fv = glm::vec4(fv.x / fv.w, fv.y / fv.w, fv.z / fv.w, 1);
+
+	GLfloat minX = fv.x, maxX = fv.x;
+	GLfloat minY = fv.y, maxY = fv.y;
+	GLfloat minZ = fv.z, maxZ = fv.z;
+
+	for (int i = 1; i < mesh.vertices.size(); i++)
+	{
+		fv = modelMatrix * glm::vec4(mesh.vertices[i].position, 1.0f);
+		fv = fv / fv.w;
+
+		minX = fminf(minX, fv.x); 
+		maxX = fmaxf(maxX, fv.x);
+
+		minY = fminf(minY, fv.y); 
+		maxY = fmaxf(maxY, fv.y);
+
+		minZ = fminf(minZ, fv.z); 
+		maxZ = fmaxf(maxZ, fv.z);
+	}
+
+	glm::vec3 center((minX + maxX) / 2.0f, (minY + maxY) / 2.0f, (minZ + maxZ) / 2.0f);
+	glm::vec3 halfDim((maxX - minX) / 2.0f, (maxY - minY) / 2.0f, (maxZ - minZ) / 2.0f);
+
+	return AABB(center, halfDim);
 }
 
 GLint TextureFromFile(const char* path, std::string directory)

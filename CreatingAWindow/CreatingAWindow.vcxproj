@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AABB.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Uniform.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -207,11 +209,109 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="bbVert.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bbVert.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="bbFrag.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bbFrag.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="groundVert.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="groundVert.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="groundFrag.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="groundFrag.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="portalVert.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="portalVert.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="portalFrag.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="portalFrag.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="skybox_vert.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="skybox_vert.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="skybox_frag.glsl">
+      <FileType>Script</FileType>
+      <DeploymentContent>true</DeploymentContent>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="skybox_frag.glsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AABB.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Maths.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Skybox.h" />
     <ClInclude Include="Uniform.h" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +319,9 @@
     <Image Include="brown.png" />
     <Image Include="cactus1_diffuse.png" />
     <Image Include="container.jpg" />
+    <Image Include="Sand_6_AO.png" />
+    <Image Include="Sand_6_Diffuse.png" />
+    <Image Include="Sand_6_Normal.png" />
     <Image Include="wall.jpg">
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
     </Image>

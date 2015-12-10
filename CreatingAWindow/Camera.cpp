@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Camera.h"
 
-const GLfloat movementSpeed = .5f;
+const GLfloat movementSpeed = 1.5f;
 const GLfloat mouseSensitivity = 0.25f;
 
 Camera::Camera(
@@ -26,6 +26,11 @@ glm::mat4 Camera::getViewMatrix()
 glm::vec3 Camera::getCameraPosition()
 {
 	return position;
+}
+
+void Camera::setCameraPosition(glm::vec3 position)
+{
+	this->position = position;
 }
 
 void Camera::recalculate()

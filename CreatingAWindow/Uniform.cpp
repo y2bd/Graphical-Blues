@@ -70,3 +70,9 @@ void Uniform::apply(GLfloat value)
 {
 	glUniform1f(this->location, value);
 }
+
+template<>
+void Uniform::apply(bool value)
+{
+	glUniform1i(this->location, value);
+}

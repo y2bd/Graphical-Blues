@@ -17,6 +17,7 @@
 #include <assimp/postprocess.h>
 
 #include "Mesh.h"
+#include "AABB.h"
 
 class Model
 {
@@ -34,6 +35,8 @@ public:
 	~Model() {};
 
 	void draw(Shader& shader);
+
+	AABB getBoundingBox(glm::mat4 modelMatrix);
 };
 
 #endif

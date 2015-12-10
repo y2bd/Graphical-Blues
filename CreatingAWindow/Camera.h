@@ -23,6 +23,8 @@ public:
 	glm::mat4 getViewMatrix();
 	glm::vec3 getCameraPosition();
 
+	void setCameraPosition(glm::vec3 position);
+
 	void handleKeyboard(bool keys[], GLfloat dt);
 	void handleMouse(GLfloat dx, GLfloat dy);
 };

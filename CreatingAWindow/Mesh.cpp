@@ -33,7 +33,9 @@ void Mesh::draw(Shader& shader)
 	glActiveTexture(GL_TEXTURE0);
 
 	glBindVertexArray(VAO);
+	shader.bind();
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+	shader.unbind();
 	glBindVertexArray(0);
 }
 

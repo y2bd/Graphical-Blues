@@ -18,7 +18,9 @@ public:
 	template<class T>
 	void apply(T value) 
 	{
-		printf("Using default Uniform application!! error!!\n");
+		printf("Using default Uniform application!! error!! ");
+		printf(value);
+		printf("\n");
 	}
 };
 
@@ -55,6 +57,8 @@ void Uniform::apply(GLint value);
 template<>
 void Uniform::apply(GLfloat value);
 
+template<>
+void Uniform::apply(bool value);
 
 class UniformData
 {

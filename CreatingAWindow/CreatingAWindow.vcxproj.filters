@@ -33,6 +33,12 @@
     <ClCompile Include="Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AABB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="vert.glsl">
@@ -51,6 +57,24 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="shadowFrag.glsl">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="bbVert.glsl">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="bbFrag.glsl">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="groundVert.glsl">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="groundFrag.glsl">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="portalVert.glsl">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="portalFrag.glsl">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
@@ -73,6 +97,12 @@
     <ClInclude Include="Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AABB.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="wall.jpg">
@@ -88,6 +118,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="cactus1_diffuse.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sand_6_AO.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sand_6_Diffuse.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sand_6_Normal.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
