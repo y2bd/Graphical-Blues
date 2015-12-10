@@ -16,11 +16,14 @@
 #include "Shader.h"
 #include "Maths.h"
 #include "Skybox.h"
+#include "Terrain.h"
+Terrain g_Terrain(30, 2);
 
 GLFWwindow* setupWindow(int width, int height, const char* name);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
 GLuint createTexture(const char* filename);
+
 
 const GLfloat WIDTH = 800, HEIGHT = 600;
 const GLchar* TITLE = "lrn2opengl";
@@ -119,6 +122,25 @@ int main()
     // Initialize skybox
     Skybox skybox("skybox/right.jpg", "skybox/left.jpg", "skybox/top.jpg", "skybox/bottom.jpg", "skybox/back.jpg", "skybox/front.jpg", 1.0f);
 
+    //terrain
+    //if (!terrain.GenerateHeightmap(1000))
+    if (!g_Terrain.LoadHeightmap("Data/Terrain/terrain0-16bbp-257x257.raw", 16, 257, 257))
+    {
+        std::cerr << "Failed to load heightmap for terrain!" << std::endl;
+    }
+    if (!g_Terrain.LoadTexture("Data/Textures/grass.jpg", 0))
+    {
+        std::cerr << "Failed to load terrain texture for texture stage 0!" << std::endl;
+    }
+    if (!g_Terrain.LoadTexture("Data/Textures/rock.png", 1))
+    {
+        std::cerr << "Failed to load terrain texture for texture stage 1!" << std::endl;
+    }
+    if (!g_Terrain.LoadTexture("Data/Textures/snow.jpg", 2))
+    {
+        std::cerr << "Failed to load terrain texture for texture stage 2!" << std::endl;
+    }
+
 	// event loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -170,6 +192,8 @@ int main()
 		glBindVertexArray(0);
 
 		shader.unbind();
+
+        g_Terrain.Render();
 
         // draw the skybox last
         skybox.draw(view, proj);
