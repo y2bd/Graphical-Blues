@@ -22,6 +22,7 @@
 #include "Mesh.h"
 #include "AABB.h"
 #include "Skybox.h"
+#include "Sound.h"
 
 GLFWwindow* setupWindow(int width, int height, const char* name);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -33,6 +34,7 @@ GLuint createTexture(const char* filename);
 const GLfloat WIDTH = 1366, HEIGHT = 768;
 const GLchar* TITLE = "Graphical Blues (167)";
 
+unsigned int walkSound, desertMusic, grassmusic;
 // Deltatime
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
@@ -50,6 +52,7 @@ bool keyIsPressed = false;
 GLfloat prevX, prevY;
 
 bool drawBoundingBoxes = false;
+bool wasInGrassWorld = true;
 bool inGrassWorld = false;
 
 bool showNormal = false;
@@ -288,6 +291,8 @@ int main()
 	Skybox nightbox("skybox/sor_hills/right.jpg", "skybox/sor_hills/left.jpg", "skybox/sor_hills/top.jpg", "skybox/sor_hills/bottom.jpg", "skybox/sor_hills/back.jpg", "skybox/sor_hills/front.jpg", 1.0f);
 	Skybox skybox("skybox/right.jpg", "skybox/left.jpg", "skybox/top.jpg", "skybox/bottom.jpg", "skybox/back.jpg", "skybox/front.jpg", 1.0f);
 
+    Sound::InitEngine();
+
 	// event loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -351,12 +356,26 @@ int main()
 			cam.setCameraPosition(oldPosition + offset);
 			character.center = oldPosition + offset;
 		}
-
 		float len = glm::distance(character.center, glm::vec3(0, -1, 0));
 		if (!transferred && len < 0.5f && cam.getCameraPosition().x > 0.0) {
 			inGrassWorld = !inGrassWorld;
 			transferred = true;
 		}
+
+        // bgm
+        if (wasInGrassWorld == true && inGrassWorld == false)
+        {
+            if (grassmusic != 0)             Sound::stop(grassmusic);
+            grassmusic = 0;
+            desertMusic = Sound::playInLoop("desertmusic.ogg");
+        }
+        else if (wasInGrassWorld == false && inGrassWorld == true)
+        {
+            if (desertMusic != 0) Sound::stop(desertMusic);
+            desertMusic = 0;
+            grassmusic = Sound::playInLoop("grassmusic.ogg");
+        }
+        wasInGrassWorld = inGrassWorld;
 
 		if (transferred && len > 3.0f) {
 			transferred = false;
@@ -1152,6 +1171,11 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 			}
 		}
 	}
+    if (key == GLFW_KEY_W || key == GLFW_KEY_A || key == GLFW_KEY_S || key == GLFW_KEY_D)
+    {
+        if (action == GLFW_PRESS) grassmusic = Sound::playInLoop("walk.wav");
+        else if (action == GLFW_RELEASE)Sound::stop(grassmusic);
+    }
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
